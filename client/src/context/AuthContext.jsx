@@ -68,11 +68,25 @@ const AuthContextProvider = ({children}) => {
       
    }
 
+   const updateUser = async (values) => {
+      try {
+         const response = await axios.put(`${BASE_URL}/${token._id}`, values, {
+            withCredentials: true,
+            credentials: 'include',
+          })
+         saveToken(response.data)  
+         return response
+      } catch (error) {
+         console.log(error)
+      }
+      
+   }
+
 
 
 
   return (
-   <AuthContext.Provider value={{login, logout, register, getUser, currentUser}}>
+   <AuthContext.Provider value={{login, logout, register, getUser, currentUser, updateUser}}>
       {children}
    </AuthContext.Provider>
   )
