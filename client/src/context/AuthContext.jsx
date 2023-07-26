@@ -5,7 +5,7 @@ import axios from 'axios'
 
 const AuthContext = createContext()
 // const BASE_URL = "http://localhost:5000/api/users"
-const BASE_URL = "https://mern-auth-s472.onrender.com"
+const BASE_URL = "https://mern-auth-s472.onrender.com/api/users"
 
 const AuthContextProvider = ({children}) => {
    const [ currentUser, setcurrentUser ] = useState({})
@@ -17,7 +17,7 @@ const AuthContextProvider = ({children}) => {
             withCredentials: true,
             credentials: 'include',
           })
-          saveToken("damn")  
+          saveToken(response.data)  
           getUser(response.data._id)
          return response
       } catch (error) {
