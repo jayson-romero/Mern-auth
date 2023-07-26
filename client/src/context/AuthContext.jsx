@@ -4,7 +4,8 @@ import { LocalStorageContext } from '../utils/LocalStorage'
 import axios from 'axios'
 
 const AuthContext = createContext()
-const BASE_URL = "http://localhost:5000/api/users"
+// const BASE_URL = "http://localhost:5000/api/users"
+const BASE_URL = "https://mern-auth-s472.onrender.com"
 
 const AuthContextProvider = ({children}) => {
    const [ currentUser, setcurrentUser ] = useState({})
@@ -16,7 +17,7 @@ const AuthContextProvider = ({children}) => {
             withCredentials: true,
             credentials: 'include',
           })
-          saveToken(response.data)  
+          saveToken("damn")  
           getUser(response.data._id)
          return response
       } catch (error) {
